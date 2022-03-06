@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const task = require('./models/task');
+const Task = require('./models/task');
 const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();

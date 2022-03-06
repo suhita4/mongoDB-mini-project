@@ -1,11 +1,11 @@
 const express = require('express');
-const task = require('../models/task');
+const Task = require('../models/task');
 
 const router = express.Router();
 
 router.get('/tasks', (req, res) => {
 
-  task.find().sort({ createdAt: -1 })
+  Task.find().sort({ createdAt: -1 })
     .then((result) => {
       console.log("Results of get all the tasks:- ", result);
       res.render('index', { title: 'All Tasks', tasks: result });
@@ -20,21 +20,20 @@ router.get('/tasks/add', (req, res) => {
 
 router.get('/tasks/:id', (req, res) => {
   const id = req.params.id;
-  task.findById(id)
+  Task.findById(id)
     .then((result) => {
       res.render('detail', { title: 'task details', task: result });
     })
     .catch(err => console.log(err));
 });
 
-
 router.post('/tasks', (req, res) => {
   const newTask = req.body;
   newTask["completed"] = false;
   console.log(newTask);
-  const Task = new Task(newTask);
+  const task = new Task(newTask);
 
-  Task.save()
+  task.save()
     .then((result) => {
       res.redirect('/tasks');
     })
@@ -44,13 +43,13 @@ router.post('/tasks', (req, res) => {
 
 router.put('/tasks/:id', (req, res) => {
 
-  const Task = new Task({
+  const task = new Task({
     _id: req.params.id,
     description: req.params.description,
     completed: true
   });
 
-  task.updateOne({ _id: req.params.id }, task)
+  Task.updateOne({ _id: req.params.id }, task)
     .then((result) => {
       res.json({ redirect: '/tasks' })
     })
@@ -61,7 +60,7 @@ router.put('/tasks/:id', (req, res) => {
 router.delete('/tasks/:id', (req, res) => {
   const id = req.params.id;
 
-  task.findByIdAndDelete(id)
+  Task.findByIdAndDelete(id)
     .then((results) => {
       res.json({ redirect: '/tasks' });
     })
