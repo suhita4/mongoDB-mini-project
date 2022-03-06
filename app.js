@@ -6,13 +6,11 @@ const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
-const dbURI = 'mongodb+srv://suhita:<password>@task-manager.bkc32.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const dbURI = `${process.env.DBURI}`;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(process.env.PORT || 3000, function(){
-      console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-    });
+    app.listen(process.env.PORT || 5000);
   })
   .catch(err => console.log(err));
 
