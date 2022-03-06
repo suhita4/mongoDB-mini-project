@@ -36,7 +36,7 @@
       <script>
         const update = document.querySelector('a.update');
         update.addEventListener('click', (e) => {
-          const endpoint = `/tasks/${trash.dataset.doc}`;
+          const endpoint = `/tasks/${del.dataset.doc}`;
 
           fetch(endpoint, {
             method: 'PUT'
@@ -46,9 +46,9 @@
             .catch(err => console.log(err));
         });
 
-        const trash = document.querySelector('a.delete');
-        trash.addEventListener('click', (e) => {
-          const endpoint = `/tasks/${trash.dataset.doc}`;
+        const del = document.querySelector('a.delete');
+        del.addEventListener('click', (e) => {
+          const endpoint = `/tasks/${del.dataset.doc}`;
 
           fetch(endpoint, {
             method: 'DELETE'
