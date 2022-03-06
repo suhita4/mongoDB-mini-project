@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager Mini</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <nav>
+      <div class="site-title">
+        <a href="/">
+          <h1>Mini Task Manager</h1>
+        </a>
+        <p>Manage all your tasks here</p>
+      </div>
+      <ul>
+        <li><a href="/">Tasks</a></li>
+        <li><a href="/tasks/add">Add Task</a></li>
+        <li><a href="/tasks">About</a></li>
+      </ul>
+    </nav>
+      <div class="tasks content">
+        <h2> All Tasks </h2>
+        <% if (tasks.length> 0) { tasks.forEach(task => {%>
+          <% if (task.completed==false) { %>
+            <a class="showDetails" href="/tasks/<%=task._id%>">
+              <h3 class="title">
+                <%=task.title%>
+              </h3>
+              <p class="status inc">Incomplete!</p>
+            </a>
+            <%} }); tasks.forEach(task=> { %>
+              <% if (task.completed==true) { %>
+                <a class="showDetails" href="/tasks/<%=task._id%>">
+                  <h3 class="title">
+                    <%=task.title%>
+                  </h3>
+                  <p class="status com">Completed</p>
+                </a>
+                <%} }); } else { %>
+                  <p class="no-tasks">There are no Tasks to display !!</p>
+                  <%}%>
+      </div>
+
+      <footer>Copyright &copy; Task Manager 2022</footer>
+
+  </body>
+
+</html>
