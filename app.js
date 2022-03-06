@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const Task = require('./models/task');
 const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
