@@ -6,7 +6,7 @@ const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
-const dbURI = `${process.env.DBURI}`;
+const dbURI = 'mongodb+srv://stige:stige@stige-week7-mogodb-basi.cttbz.mongodb.net/stige-week7?retryWrites=true&w=majority';
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
