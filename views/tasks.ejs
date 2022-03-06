@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="/tasks">
+          <h1>Task Manager</h1>
+        </a>
+      </div>
+      <div class="menu">
+        <a href="/tasks">Tasks</a>
+        <a href="/tasks/add"><div class="create">Create Task</div></a>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="allTasks">
+        <p class="heading">All tasks</p>
+        <% if (tasks.length> 0) { tasks.forEach(task => {%>
+          <% if (task.completed==false) { %>
+            <a class="showDetails" href="/tasks/<%=task._id%>">
+              <h3 class="title">
+                <%=task.title%>
+              </h3>
+              <p class="incomplete">Incomplete</p>
+            </a>
+            <%} }); tasks.forEach(task=> { %>
+              <% if (task.completed==true) { %>
+                <a class="showDetails" href="/tasks/<%=task._id%>">
+                  <h3 class="title">
+                    <%=task.title%>
+                  </h3>
+                  <p class="complete">Completed</p>
+                </a>
+                <%} }); } else { %>
+                  <p class="noTasks">Yay! You completed all your tasks!</p>
+                <%}%>
+      </div>
+    </div>
+  </body>
+</html>

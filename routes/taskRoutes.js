@@ -7,7 +7,7 @@ router.get('/tasks', (req, res) => {
   Task.find().sort({ createdAt: -1 })
     .then((result) => {
       console.log("All tasks: ", result);
-      res.render('index', { title: 'Your Tasks', tasks: result });
+      res.render('tasks', { title: 'Your Tasks', tasks: result });
     })
     .catch(err => console.log(err));
 

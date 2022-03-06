@@ -9,26 +9,24 @@
   <body>
     <nav>
       <div class="logo">
-        <a href="/">
+        <a href="/tasks">
           <h1>Task Manager</h1>
         </a>
       </div>
-      <ul>
-        <li><a href="/tasks">Tasks</a></li>
-        <li><a href="/tasks/add"><div class="create">Create Task</div></a></li>
-      </ul>
+      <div class="menu">
+        <a href="/tasks">Tasks</a>
+        <a href="/tasks/add"><div class="create">Create Task</div></a>
+      </div>
     </nav>
-    <p class="heading">Your task</p>
     <div class="wrapper">
       <div class="taskContent">
+        <p class="heading">Your task</p>
           <h2>
             <%=task.title%>
           </h2>
-          <div class="content">
             <p class="description">
               <%=task.description%>
             </p>
-          </div>
         <div class="edit">
           <a class="update" data-doc="<%=task._id%>">Mark Complete</a>
           <a class="delete" data-doc="<%=task._id%>">Delete</a>
